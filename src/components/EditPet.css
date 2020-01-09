@@ -1,0 +1,18 @@
+.pet-edit {
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pet-form-container {
+    justify-content: center;
+    align-items: center;
+
+}
+
+.pet-form {
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

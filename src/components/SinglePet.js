@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getSinglePet, getDeletedPet } from '../reducers/pet'
-import {Redirect} from 'react-router-dom';
 
 import './SinglePet.css';
 
@@ -26,6 +26,7 @@ class SinglePet extends React.Component {
 
     render() {
         const pet = this.props.pet
+        if(pet.id) {
         return (
             <div className = 'one-pet'>
                 <div className = 'left-container'>
@@ -38,7 +39,7 @@ class SinglePet extends React.Component {
                     <p>Hair Length: {pet.hair}</p>
                     <p>Color: {pet.color}</p>
                     <p>Weight: {pet.weight} lbs</p>
-                    <p>Is Vacinated: {(pet.isVacinated) ? 'Yes' : 'No'}</p>
+                    <p>Is Vacinated: {pet.isVacinated === 'true' ? 'Yes' : 'No'}</p>
                 </div>
                 </div>
                 <div className = 'one-pet-summary'>
@@ -47,12 +48,19 @@ class SinglePet extends React.Component {
                     <h2>{pet.location}</h2>
                     <p>{pet.description}</p>
                     <div className = 'buttons'>
-                        <button>Edit Entry</button>
+                        <Link to={`/pet/${pet.id}/edit`}><button>Edit Entry</button></Link>
                         <button onClick={() => this.handleDelete(pet.id)}>Delete Entry</button>
                     </div>
                 </div>
             </div>
         )
+        } else {
+            return (
+                <div>
+                    Page does not exisit
+                </div>
+            )
+        }
     }
 }
 

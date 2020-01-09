@@ -2,6 +2,7 @@
 const SHOW_ALL_PETS = 'SHOW_ALL_PETS'
 const SHOW_SINGLE_PET = 'SHOW_SINGLE_PET'
 const DELETE_PET = 'DELETE_PET'
+const EDIT_PET = 'EDIT_PET'
 
 //ACTION CREATOR
 const gotPets = (pets) => ({
@@ -17,6 +18,11 @@ const gotSinglePet = (pet) => ({
 const gotDeletedPet = (petId) => ({
     type: DELETE_PET,
     petId
+})
+
+const gotEditPet = (pet) => ({
+    type: EDIT_PET,
+    pet
 })
 
 //THUNK CREATOR
@@ -68,6 +74,29 @@ export const getDeletedPet = (deletedPetId) => {
     }
 }
 
+export const getEditPet = (newPetObj) => {
+    return async (dispatch, getState) => {
+        const pets = JSON.parse(localStorage.getItem('pets'))
+
+         //reset local storage and assin new array of pets without newly deleted pet
+         localStorage.removeItem('pets');
+         let newPets = []
+
+        //cycle through old pets array exclude deleted petId
+        pets.forEach((singlePet) => {
+            if(newPetObj.id === singlePet.id) {
+                newPets.push(newPetObj)
+            } else {
+                newPets.push(singlePet)
+            }
+        })
+
+        localStorage.setItem('pets', JSON.stringify(newPets));
+        dispatch(gotEditPet(newPetObj))
+
+
+    }
+}
 
 //INITIAL STATE
 const initalState = {
@@ -88,6 +117,8 @@ const petReducer = (state = initalState, action) => {
                     return pet.id !== action.petId
                 })
             return {...state, all: newPetList}
+        case EDIT_PET:
+            return {...state, single: action.pet}
         default:
         return state
     }

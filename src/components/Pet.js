@@ -20,4 +20,6 @@ const Pet = ({ pet }) => {
     )
 }
 
+
+
 export default Pet
