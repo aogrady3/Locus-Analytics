@@ -10,6 +10,7 @@ const gotPets = (pets) => ({
 //THUNK CREATOR
 export const getPets = () => {
     return async (disptach, getState) => {
+        //Store all pets in local storage
         const pets = JSON.parse(localStorage.getItem('pets'))
         console.log(pets)
         disptach(gotPets(pets))

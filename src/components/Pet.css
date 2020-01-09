@@ -1,0 +1,39 @@
+.pet{
+    margin-right: 40px;
+    margin-left: 5px;
+    border: solid;
+    padding: 5px;
+}
+.pet a{
+    color: black;
+    text-decoration: none;
+}
+
+.pet:hover{
+    border-color: blue;
+}
+
+.pet-image{
+    width: 250px;
+    height: 175px;
+    margin-bottom: 30px;
+}
+
+.pet-image img{
+    max-width: 100%;
+    max-height: 300%;
+}
+
+.pet-summary h2{
+    font-size: 30px;
+}
+
+.pet-summary span{
+    font-size: 20px;
+}
+
+.pet-summary p{
+    font-size: 15px;
+    text-decoration: italic;
+    color: gray;
+}
