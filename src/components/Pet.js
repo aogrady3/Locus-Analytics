@@ -4,10 +4,9 @@ import './Pet.css';
 
 
 const Pet = ({ pet }) => {
-    console.log(pet)
     return (
         <div className = 'pet'>
-            <Link>
+            <Link to={`/pet/${pet.id}`}> 
             <div className='pet-image'>
             <img src ={pet.imageUrl}></img>
             </div>
