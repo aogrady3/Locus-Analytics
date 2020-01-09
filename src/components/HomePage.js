@@ -16,6 +16,8 @@ const petList = [
   ];
   if (localStorage.getItem("pets") === null) {
     localStorage.setItem('pets', JSON.stringify(petList));
+
+
   }
 
   

@@ -1,18 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getSinglePet } from '../reducers/pet'
+import { getSinglePet, getDeletedPet } from '../reducers/pet'
+import {Redirect} from 'react-router-dom';
+
 import './SinglePet.css';
 
 
 class SinglePet extends React.Component {
     constructor(props) {
         super(props)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     componentDidMount() {
         //Grab single Pet from URL
         const pageId = this.props.routeProps.match.params.petId
         this.props.getSinglePet(pageId)
+    }
+
+    handleDelete(id) {
+        //delete from local storage and then redirect
+        this.props.getDeletedPet(id)
+        this.props.routeProps.history.push('/')
     }
 
     render() {
@@ -37,7 +46,10 @@ class SinglePet extends React.Component {
                     <h3>{pet.age} years old - {pet.sex}</h3> 
                     <h2>{pet.location}</h2>
                     <p>{pet.description}</p>
-                    
+                    <div className = 'buttons'>
+                        <button>Edit Entry</button>
+                        <button onClick={() => this.handleDelete(pet.id)}>Delete Entry</button>
+                    </div>
                 </div>
             </div>
         )
@@ -51,7 +63,8 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
     getSinglePet: (id) => dispatch(getSinglePet(id)),
-
+    getDeletedPet: (id) => dispatch(getDeletedPet(id))
+    
 })
 
 export default connect(mapState, mapDispatch)(SinglePet)
