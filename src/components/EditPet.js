@@ -21,6 +21,7 @@ class EditPet extends React.Component {
             isVacinated: this.props.pet.isVacinated,
             color: this.props.pet.color,
             sex: this.props.pet.sex,
+            location: this.props.pet.location
         }
         this.handleSumbit = this.handleSumbit.bind(this)
     }
@@ -56,6 +57,13 @@ class EditPet extends React.Component {
                         type="text"
                         value={this.state.age}
                         onChange={evt => this.setState({ age: evt.target.value })}
+                    />
+                     <label htmlFor="Location" >Pet Location </label>
+                    <input
+                        name="location"
+                        type="text"
+                        value={this.state.location}
+                        onChange={evt => this.setState({ location: evt.target.value })}
                     />
                      <label htmlFor="Breed">Pet Breed </label>
                     <input

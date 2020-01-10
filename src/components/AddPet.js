@@ -12,6 +12,7 @@ class EditPet extends React.Component {
             id: 0,
             date: new Date().toString(),
             name: '',
+            location: '',
             age: '',
             breed: '',
             imageUrl: '',
@@ -64,6 +65,13 @@ class EditPet extends React.Component {
                         type="text"
                         value={this.state.age}
                         onChange={evt => this.setState({ age: evt.target.value })}
+                    />
+                     <label htmlFor="Location" >Pet Location </label>
+                    <input
+                        name="location"
+                        type="text"
+                        value={this.state.location}
+                        onChange={evt => this.setState({ location: evt.target.value })}
                     />
                      <label htmlFor="Breed">Pet Breed </label>
                     <input
