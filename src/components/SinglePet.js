@@ -48,8 +48,8 @@ class SinglePet extends React.Component {
                     <h2>{pet.location}</h2>
                     <p>{pet.description}</p>
                     <div className = 'buttons'>
-                        <Link to={`/pet/${pet.id}/edit`}><button>Edit Entry</button></Link>
-                        <button onClick={() => this.handleDelete(pet.id)}>Delete Entry</button>
+                        <Link to={`/pet/${pet.id}/edit`}><button className="edit-button">Edit Entry</button></Link>
+                        <button onClick={() => this.handleDelete(pet.id)} className='delete-button'>Delete Entry</button>
                     </div>
                 </div>
             </div>

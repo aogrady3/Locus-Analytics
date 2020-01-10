@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getPets } from '../reducers/pet'
 import Pet from './Pet'
+
 import './HomePage.css';
 
 
@@ -20,8 +21,6 @@ const petList = [
 
   }
 
-  
-
 class HomePage extends React.Component  {
     //Grab all pets from redux store
     componentDidMount() {
@@ -33,7 +32,10 @@ class HomePage extends React.Component  {
         const pets = this.props.pets
         return (
             <div>
-                <h1>All Cats for adoption</h1>
+                <div className='header'>
+                    <h1>Available Cats!</h1>
+                    <button className ='add-button'>Add Entry</button>
+                </div>
                 <div className = 'all-cats'>
                     {pets.map(pet => {
                         return <Pet key={pet.id} pet={pet} />

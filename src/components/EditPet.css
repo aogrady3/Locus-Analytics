@@ -16,3 +16,18 @@
     justify-content: center;
     flex-direction: column;
 }
+
+.sumbit-button:hover {
+    color: white;
+    background: gray;
+    cursor: pointer;
+  }
+
+.sumbit-button{
+    background: #68A691;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    color: white;
+    border-radius: 10px;
+}

@@ -1,0 +1,39 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    background-color: #68A691;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2%;
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+    color: white;
+}
+
+.links{
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.links h1{
+    margin-left: 35px;
+}
+
+.links span{
+    font-size: 15px;
+}
+
+.links a{
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+}
+
+.links a:hover{
+    text-decoration: underline;
+   
+}
+
+.title{
+    font-size: 15px;
+}
