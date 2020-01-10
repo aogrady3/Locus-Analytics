@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getPets } from '../reducers/pet'
 import Pet from './Pet'
 
@@ -43,7 +44,7 @@ class HomePage extends React.Component  {
             <div>
                 <div className='header'>
                     <h1>Available Cats!</h1>
-                    <button className ='add-button'>Add Entry</button>
+                    <Link to='/pet/add'><button className ='add-button'>Add Entry</button></Link>
                 </div>
                 <div className = 'all-cats'>
                     {pets.map(pet => {

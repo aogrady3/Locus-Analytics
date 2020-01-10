@@ -3,6 +3,7 @@ const SHOW_ALL_PETS = 'SHOW_ALL_PETS'
 const SHOW_SINGLE_PET = 'SHOW_SINGLE_PET'
 const DELETE_PET = 'DELETE_PET'
 const EDIT_PET = 'EDIT_PET'
+const ADD_PET = 'ADD_PET'
 
 //ACTION CREATOR
 const gotPets = (pets) => ({
@@ -22,6 +23,11 @@ const gotDeletedPet = (petId) => ({
 
 const gotEditPet = (pet) => ({
     type: EDIT_PET,
+    pet
+})
+
+const gotNewPet = (pet) => ({
+    type: ADD_PET,
     pet
 })
 
@@ -98,6 +104,17 @@ export const getEditPet = (newPetObj) => {
     }
 }
 
+export const getNewPet = (newPetObj) => {
+    return async (dispatch, getState) => {
+        //reset local storage and assin new array of pets with newly added pet
+        const pets = JSON.parse(localStorage.getItem('pets'))
+        pets.push(newPetObj)
+        localStorage.setItem('pets', JSON.stringify(pets));
+
+        dispatch(gotNewPet(newPetObj))
+
+    }
+}
 //INITIAL STATE
 const initalState = {
     all: [],
@@ -118,6 +135,8 @@ const petReducer = (state = initalState, action) => {
                 })
             return {...state, all: newPetList}
         case EDIT_PET:
+            return {...state, single: action.pet}
+        case ADD_PET:
             return {...state, single: action.pet}
         default:
         return state
