@@ -10,7 +10,7 @@ class EditPet extends React.Component {
         super(props)
         this.state = {
             id: 0,
-            date: new Date().toString(),
+            date: '2020-01-10',
             name: '',
             location: '',
             age: '',
