@@ -12,7 +12,7 @@ const Pet = ({ pet }) => {
             </div>
             <div className = 'pet-summary'>
                 <h2>{pet.name}</h2>
-                <span>{pet.age} years old</span> - <span>{pet.sex}</span>
+                <span>{pet.age <= 0 ? 'Less than One' : `${pet.age} years old`}</span> - <span>{pet.sex}</span>
                 <p>{pet.location}</p>
             </div>
             </Link>
